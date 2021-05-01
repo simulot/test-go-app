@@ -33,12 +33,24 @@ func (ms *messages) add(m message) {
 }
 
 func (ms *messages) dismiss(m message) {
+	log.Printf("Before dismiss %d", m.id)
+	for i := range ms.l {
+		log.Printf("%d: %d,%s", i, ms.l[i].id, ms.l[i].text)
+	}
+
+	defer func() {
+		log.Printf("After dismiss %d", m.id)
+		for i := range ms.l {
+			log.Printf("%d: %d,%s", i, ms.l[i].id, ms.l[i].text)
+		}
+	}()
 	for i := range ms.l {
 		if ms.l[i].id == m.id {
 			copy(ms.l[i:], ms.l[i+1:])    // Shift ms.l[i+1:] left one index.
 			ms.l[len(ms.l)-1] = message{} // Erase last element (write zero value).
 			ms.l = ms.l[:len(ms.l)-1]     // Truncate slice.
 			ms.notify()
+			log.Printf("Dismiss #%d", m.id)
 			return
 		}
 	}
@@ -100,7 +112,7 @@ func (f *flat) Render() app.UI {
 									OnClick(
 										func(app.Context, app.Event) {
 											f.messages.dismiss(m)
-										}, m.id),
+										}, m),
 							)
 					}),
 			),
@@ -178,28 +190,29 @@ func (l *list) Render() app.UI {
 
 type notification struct {
 	app.Compo
-	m         message
-	dismissFn func()
+	M         message
+	DismissFn func()
 }
 
 func newNotification(message message, dismissFn func()) *notification {
 	return &notification{
-		m:         message,
-		dismissFn: dismissFn,
+		M:         message,
+		DismissFn: dismissFn,
 	}
 }
 
 func (n *notification) Render() app.UI {
-	return app.P().ID(fmt.Sprintf("P#%d", n.m.id)).
+	return app.P().ID(fmt.Sprintf("P#%d", n.M.id)).
 		Body(
 			app.Button().
-				ID(strconv.Itoa(n.m.id)).
+				ID(strconv.Itoa(n.M.id)).
 				Body(
-					app.Text(n.m.text),
+					app.Text(n.M.text),
 				).
 				OnClick(
 					func(app.Context, app.Event) {
-						n.dismissFn()
-					}, n.m.id),
+						log.Printf("Click on %s", n.M.text)
+						n.DismissFn()
+					}),
 		)
 }
