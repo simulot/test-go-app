@@ -1,0 +1,148 @@
+package main
+
+var P = &main.composed{
+    Compo: app.Compo{
+        root: &app.htmlDiv{
+            elem: app.elem{
+                attrs: {},
+                body:  {
+                    &app.htmlH1{
+                        elem: app.elem{
+                            attrs: {},
+                            body:  {
+                                &app.text{
+                                    disp:       &app.engine{(CYCLIC REFERENCE)},
+                                    jsvalue:    app.value{},
+                                    parentElem: &app.htmlH1{(CYCLIC REFERENCE)},
+                                    value:      "Notifications test composed",
+                                },
+                            },
+                            disp: &app.engine{(CYCLIC REFERENCE)},
+                            ctx:  &context.cancelCtx{
+                                Context:  &context.emptyCtx(0),
+                                mu:       sync.Mutex{},
+                                done:     0x0,
+                                children: {},
+                                err:      nil,
+                            },
+                            ctxCancel:   func() {...},
+                            events:      {},
+                            jsvalue:     app.value{},
+                            parentElem:  &app.htmlDiv{(CYCLIC REFERENCE)},
+                            selfClosing: false,
+                            tag:         "h1",
+                            this:        &app.htmlH1{(CYCLIC REFERENCE)},
+                        },
+                    },
+                    &app.htmlP{
+                        elem: app.elem{
+                            attrs: {},
+                            body:  {
+                                &app.htmlButton{
+                                    elem: app.elem{
+                                        attrs: {},
+                                        body:  {
+                                            &app.text{
+                                                disp:       &app.engine{(CYCLIC REFERENCE)},
+                                                jsvalue:    app.value{},
+                                                parentElem: &app.htmlButton{(CYCLIC REFERENCE)},
+                                                value:      "Send a notification",
+                                            },
+                                        },
+                                        disp: &app.engine{(CYCLIC REFERENCE)},
+                                        ctx:  &context.cancelCtx{
+                                            Context:  &context.emptyCtx(0),
+                                            mu:       sync.Mutex{},
+                                            done:     0x0,
+                                            children: {},
+                                            err:      nil,
+                                        },
+                                        ctxCancel: func() {...},
+                                        events:    {
+                                            "click": {
+                                                event:   "click",
+                                                scope:   "",
+                                                jsvalue: app.function{},
+                                                value:   app.EventHandler {...},
+                                            },
+                                        },
+                                        jsvalue:     app.value{},
+                                        parentElem:  &app.htmlP{(CYCLIC REFERENCE)},
+                                        selfClosing: false,
+                                        tag:         "button",
+                                        this:        &app.htmlButton{(CYCLIC REFERENCE)},
+                                    },
+                                },
+                            },
+                    },
+                    &main.list{
+                        Compo: app.Compo{
+                            disp: &app.engine{(CYCLIC REFERENCE)},
+                            ctx:  &context.cancelCtx{
+                                Context:  &context.emptyCtx(0),
+                                mu:       sync.Mutex{},
+                                done:     0x0,
+                                children: {},
+                                err:      nil,
+                            },
+                            ctxCancel:  func() {...},
+                            parentElem: &app.htmlDiv{(CYCLIC REFERENCE)},
+                            root:       &app.htmlDiv{
+                                elem: app.elem{
+                                    attrs: {"id":"NOTIFICATIONS"},
+                                    body:  {
+                                    },
+                                    disp: &app.engine{(CYCLIC REFERENCE)},
+                                    ctx:  &context.cancelCtx{
+                                        Context:  &context.emptyCtx(0),
+                                        mu:       sync.Mutex{},
+                                        done:     0x0,
+                                        children: {},
+                                        err:      nil,
+                                    },
+                                    ctxCancel:   func() {...},
+                                    events:      {},
+                                    jsvalue:     app.value{},
+                                    parentElem:  &main.list{(CYCLIC REFERENCE)},
+                                    selfClosing: false,
+                                    tag:         "div",
+                                    this:        &app.htmlDiv{(CYCLIC REFERENCE)},
+                                },
+                            },
+                            this: &main.list{(CYCLIC REFERENCE)},
+                        },
+                        messages: &main.messages{
+                            l:  {
+                                {id:1, text:"1"},
+                            },
+                            onChange: func() {...},
+                        },
+                    },
+                },
+                disp: &app.engine{(CYCLIC REFERENCE)},
+                ctx:  &context.cancelCtx{
+                    Context:  &context.emptyCtx(0),
+                    mu:       sync.Mutex{},
+                    done:     0x0,
+                    children: {},
+                    err:      nil,
+                },
+                ctxCancel:   func() {...},
+                events:      {},
+                jsvalue:     app.value{},
+                parentElem:  &main.composed{(CYCLIC REFERENCE)},
+                selfClosing: false,
+                tag:         "div",
+                this:        &app.htmlDiv{(CYCLIC REFERENCE)},
+            },
+        },
+        this: &main.composed{(CYCLIC REFERENCE)},
+    },
+    messages: &main.messages{
+        l:  {
+            {id:1, text:"1"},
+        },
+        onChange: func() {...},
+    },
+    id: 0,
+}
