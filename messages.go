@@ -35,7 +35,6 @@ func (ms *messages) add(m message) {
 func (ms *messages) dismiss(m message) {
 	for i := range ms.l {
 		if ms.l[i].id == m.id {
-			log.Printf("dismiss %v", m.id)
 			copy(ms.l[i:], ms.l[i+1:])    // Shift ms.l[i+1:] left one index.
 			ms.l[len(ms.l)-1] = message{} // Erase last element (write zero value).
 			ms.l = ms.l[:len(ms.l)-1]     // Truncate slice.

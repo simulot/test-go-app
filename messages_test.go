@@ -25,7 +25,7 @@ func TestMessages(t *testing.T) {
 			t.Errorf("Expected to be notified, but not")
 		}
 	})
-	t.Run("add 3 messages, delete 2nd", func(t *testing.T) {
+	t.Run("add 3 messages, delete 1st", func(t *testing.T) {
 		notified := false
 		notifyMe := func() {
 			notified = true
@@ -53,7 +53,7 @@ func TestMessages(t *testing.T) {
 		}
 
 		notified = false
-		mess.dismiss(list[1])
+		mess.dismiss(list[0])
 
 		if !notified {
 			t.Errorf("Expected to be notified after dismess, but not")
@@ -64,8 +64,8 @@ func TestMessages(t *testing.T) {
 		}
 
 		want := []message{
-			{id: 1, text: "1"},
-			// {id: 2, text: "2"},
+			// {id: 1, text: "1"},
+			{id: 2, text: "2"},
 			{id: 3, text: "3"},
 		}
 
