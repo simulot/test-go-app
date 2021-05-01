@@ -386,6 +386,17 @@ func TestComposed(t *testing.T) {
 		c.messages.dismiss(list[0])
 		disp.Consume()
 
+		want := []message{
+			// {id: 0, text: "1"},
+			{id: 1, text: "2"},
+			{id: 2, text: "3"},
+		}
+		if !reflect.DeepEqual(want, c.messages.l) {
+			t.Errorf("Expected %#v, got %#v", want, c.messages.l)
+		} else {
+			t.Logf("Underlying list is correct")
+		}
+
 		err := testMatches(t, c,
 			[]testcase{
 				{
@@ -415,6 +426,7 @@ func TestComposed(t *testing.T) {
 			t.Errorf("UI not as expected: %s", err)
 			return
 		}
+
 	})
 
 }
