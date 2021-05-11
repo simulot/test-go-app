@@ -40,7 +40,7 @@ func (f *field1) Render() app.UI {
 }
 
 func (f *field1) valueChanged(ctx app.Context, e app.Event) {
-	f.Value = ctx.JSSrc.Get("value").String()
+	f.Value = ctx.JSSrc().Get("value").String()
 	if f.ReportChange != nil {
 		v, err := f.ReportChange(f.Value)
 		log.Printf("ReportChange field1 return: %s", v)
